@@ -6,11 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Width="1920"
         Height="1080"
-        AllowsTransparency="True"
         Background="Transparent"
-        WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         WindowStyle="None"
+        Title="Aguarium Manager"
         mc:Ignorable="d">
 
     <Grid>
