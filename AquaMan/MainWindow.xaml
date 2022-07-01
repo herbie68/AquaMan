@@ -170,6 +170,28 @@
                         <Image Width="30"
                                Height="30"
                                Margin="5"
+                               Source="{StaticResource svg_database_fish}" />
+                        <TextBlock Style="{StaticResource menuButtonText}"
+                                   Text="Vissen database" />
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="30"
+                               Height="30"
+                               Margin="5"
+                               Source="{StaticResource svg_database_plants}" />
+                        <TextBlock Style="{StaticResource menuButtonText}"
+                                   Text="Waterplanten database" />
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="30"
+                               Height="30"
+                               Margin="5"
                                Source="{StaticResource svg_settings}" />
                         <TextBlock Style="{StaticResource menuButtonText}"
                                    Text="Instellingen" />
