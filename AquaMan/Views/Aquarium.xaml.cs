@@ -21,6 +21,10 @@ namespace AquaMan.Views
         public Aquarium()
         {
             InitializeComponent();
+            AquariumType.Items.Add("Rechthoek");
+            AquariumType.Items.Add("Vierkant");
+            AquariumType.Items.Add("Hoek");
+            AquariumType.Items.Add("Cilinder");
         }
     }
 }

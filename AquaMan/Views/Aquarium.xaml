@@ -139,7 +139,8 @@
                         </StackPanel>
 
                         <TextBlock Text="Vorm Aquarium" Style="{StaticResource pageTextBlock}" Grid.Row="3" Grid.Column="0"/>
-                        <ComboBox Name="AquariumType" Grid.Row="3" Grid.Column="1" Style="{StaticResource pageComboBox}"/>
+                        <ComboBox Name="AquariumType" Grid.Row="3" Grid.Column="1" Tag="Selecteer de vorm van je aquarium..." IsEditable="True">
+                        </ComboBox>
                     </Grid>
                 </Grid>
             </TabItem>

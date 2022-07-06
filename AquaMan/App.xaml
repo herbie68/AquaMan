@@ -1,6 +1,7 @@
 ﻿<Application x:Class="AquaMan.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dotNetKitControls="clr-namespace:DotNetKit.Windows.Controls;assembly=DotNetKit.Wpf.AutoCompleteComboBox"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:local="clr-namespace:AquaMan"
              StartupUri="MainWindow.xaml">
@@ -60,6 +61,84 @@
         <SolidColorBrush x:Key="tabControl.Item.IsSelected.Background"
                          Color="#FF7EB4EA" />
 
+        <!--#region ComboBox Colors-->
+        <SolidColorBrush x:Key="control.ComboBox.TextBox.Background"
+                         Color="#707db2" />
+        <SolidColorBrush x:Key="control.ComboBox.TextBox.Foreground"
+                         Color="White" />
+
+        <SolidColorBrush x:Key="control.ComboBox.Dropdown.Arrow"
+                         Color="#27387A" />
+        <SolidColorBrush x:Key="control.ComboBox.DropdownList.Background"
+                         Color="#BCCAF1" />
+        <SolidColorBrush x:Key="control.ComboBox.DropdownList.Foreground"
+                         Color="#7388AE" />
+        <SolidColorBrush x:Key="control.ComboBox.DropdownList.BorderBrush"
+                         Color="#27387A" />
+
+        <SolidColorBrush x:Key="control.ComboBox.DisabledForeground"
+                         Color="#888" />
+        <SolidColorBrush x:Key="control.ComboBox.DisabledBackground"
+                         Color="#EEE" />
+        <SolidColorBrush x:Key="control.ComboBox.DisabledBorderBrush"
+                         Color="#AAA" />
+
+        <LinearGradientBrush x:Key="control.ComboBox.Dropdown.Background" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="#FFF" />
+                    <GradientStop Offset="1.0" Color="#BCCAF1" />
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="control.ComboBox.BorderBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="#BCCAF1" />
+                    <GradientStop Offset="1.0" Color="#27387A" />
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="control.ComboBox.DropDown.IsMouseOver" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="White" />
+                    <GradientStop Offset="1.0" Color="#707db2" />
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="control.ComboBox.DropDown.IsPressed" StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="#707db2" />
+                    <GradientStop Offset="0.1" Color="#BCCAF1" />
+                    <GradientStop Offset="0.9" Color="#BCCAF1" />
+                    <GradientStop Offset="1.0" Color="White" />
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <!--  Fill Brushes  -->
+
+        <SolidColorBrush x:Key="DisabledForegroundBru1sh"
+                         Color="#888" />
+
+        <SolidColorBrush x:Key="DisabledBackgroundBru1sh"
+                         Color="#EEE" />
+
+        <SolidColorBrush x:Key="W1indowBackgroundBrush"
+                         Color="#FFF" />
+
+        <!--  Border Brushes  -->
+        <SolidColorBrush x:Key="DisabledBorderBrus1h"
+                         Color="#AAA" />
+
+        <SolidColorBrush x:Key="SolidBorderBru1sh"
+                         Color="#888" />
+        <!--#endregion-->
         <!--#endregion-->
 
         <!--#region SVG Images-->
@@ -242,39 +321,53 @@
         <DrawingImage x:Key="svg_settings"
                       Drawing="{StaticResource svg_settingsDrawingGroup}" />
         <!--#endregion-->
-        
+
         <!--#region Fish Database-->
         <Geometry x:Key="svg_database_fishGeometry1">F1 M910,1173z M0,0z M3942,11713C3913,11654 3905,11588 3905,11385 3905,11189 3907,11168 3932,11067 3976,10894 4023,10760 4170,10385 4377,9858 4400,9758 4400,9379 4400,9005 4414,8943 4620,8440 4682,8289 4735,8147 4738,8124 4743,8080 4710,7894 4679,7788 4652,7695 4588,7572 4544,7527 4498,7480 4416,7438 4250,7375 4181,7349 4103,7316 4076,7303L4028,7278 3981,7311C3860,7396 3769,7480 3440,7811 3245,8007 3048,8196 3002,8232 2843,8357 2664,8439 2404,8505 2235,8549 2173,8556 2116,8540 2048,8521 2025,8491 2026,8422 2027,8345 2058,8275 2235,7950 2398,7651 2455,7528 2501,7378 2528,7289 2532,7258 2534,7155 2535,7062 2531,7022 2517,6979 2499,6924 2499,6922 2517,6889 2530,6863 2535,6835 2534,6775 2532,6642 2478,6490 2303,6130 2139,5793 2100,5698 2080,5589 2067,5517 2078,5471 2117,5440 2151,5413 2245,5413 2351,5440 2395,5452 2477,5467 2533,5476 2933,5535 3198,5669 3716,6077 3941,6254 3960,6266 4028,6281 4184,6315 4369,6272 4507,6170 4544,6143 4548,6137 4540,6112 4439,5794 4400,5607 4365,5280 4354,5183 4350,5015 4350,4680 4350,4268 4353,4180 4375,3920 4422,3368 4402,2990 4304,2590 4214,2222 4049,1896 3832,1653 3691,1497 3530,1366 3390,1295 3288,1244 3196,1176 3115,1095 3023,1003 2989,949 3006,922 3031,882 3084,901 3257,1014 3311,1049 3409,1105 3475,1140 4042,1437 4245,1559 4532,1780 4676,1891 4917,2127 5014,2252 5057,2308 5089,2340 5101,2340 5128,2340 5249,2458 5344,2576 5457,2717 5656,3045 5892,3479 6267,4167 6466,4390 6792,4484 6879,4509 7060,4543 7068,4536 7076,4528 7008,4215 6969,4080 6898,3833 6825,3659 6625,3261 6461,2933 6427,2844 6295,2390 6183,2003 6126,1840 6045,1680 5895,1380 5710,1114 5405,760 5234,563 5141,443 5087,355 5032,265 4954,60 4975,60 4991,60 5218,271 5407,462 5761,819 5874,960 6070,1290 6317,1707 6626,2266 6832,2667 6855,2712 6876,2747 6878,2745 6882,2742 6868,2676 6789,2320 6716,1992 6688,1886 6620,1685 6498,1329 6352,984 6225,755 6132,588 6027,312 5996,155 5975,43 5973,7 5988,2 6028,-11 6228,284 6423,645 6551,881 6591,978 6745,1425 6836,1689 6872,1790 7020,2190 7470,3410 7620,3899 7715,4455 7729,4538 7743,4612 7746,4621 7748,4629 7771,4646 7798,4659 7869,4694 7971,4765 8061,4843 8200,4963 8317,5112 8548,5460 8666,5639 8793,5826 8830,5875 9007,6116 9074,6240 9092,6367 9114,6518 9070,6592 8886,6719 8642,6888 8476,7057 8112,7509 7849,7835 7854,7830 7370,8197 7037,8450 6937,8534 6780,8690 6711,8759 6561,8898 6445,9000 6330,9102 6196,9224 6148,9272 6014,9407 5878,9585 5834,9688 5643,10120 5367,10495 4898,10955 4688,11162 4532,11301 4323,11467 4172,11587 3974,11730 3959,11730 3954,11730 3947,11722 3942,11713z</Geometry>
         <Geometry x:Key="svg_database_fishGeometry2">F1 M910,1173z M0,0z M1510,5324C735,5272,178,5090,32,4840L5,4795 5,4430C5,4020 1,4041 83,3953 259,3762 698,3618 1300,3553 1527,3528 2086,3529 2310,3554 2907,3620 3343,3764 3517,3953 3599,4041 3595,4020 3595,4430L3595,4795 3568,4842C3439,5061 2962,5237 2315,5305 2174,5320 1639,5333 1510,5324z</Geometry>
         <Geometry x:Key="svg_database_fishGeometry3">F1 M910,1173z M0,0z M33,3633L5,3585 5,3225C5,2821 2,2841 83,2753 259,2562 698,2418 1300,2353 1527,2328 2086,2329 2310,2354 2907,2420 3343,2564 3517,2753 3597,2840 3595,2824 3598,3200 3601,3548 3599,3581 3559,3647L3539,3679 3497,3638C3301,3448 2839,3305 2240,3248 2066,3232 1525,3232 1355,3248 1033,3280 762,3332 540,3407 330,3477 191,3551 103,3640L62,3682 33,3633z</Geometry>
         <Geometry x:Key="svg_database_fishGeometry4">F1 M910,1173z M0,0z M33,2433L5,2385 5,2025C5,1621 2,1641 83,1553 259,1362 699,1218 1300,1153 1532,1128 2078,1128 2305,1153 2910,1221 3342,1363 3517,1553 3598,1641 3595,1621 3595,2025L3595,2385 3567,2432 3539,2479 3497,2439C3301,2248 2840,2105 2240,2048 2066,2032 1525,2032 1355,2048 752,2107 292,2250 103,2439L61,2481 33,2433z</Geometry>
-        <DrawingGroup x:Key="svg_database_fishDrawingGroup" ClipGeometry="M0,0 V1173 H910 V0 H0 Z">
-            <DrawingGroup Opacity="1" Transform="0.1,0,0,-0.1,0,1173">
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_fishGeometry1}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_fishGeometry2}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_fishGeometry3}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_fishGeometry4}" />
+        <DrawingGroup x:Key="svg_database_fishDrawingGroup"
+                      ClipGeometry="M0,0 V1173 H910 V0 H0 Z">
+            <DrawingGroup Opacity="1"
+                          Transform="0.1,0,0,-0.1,0,1173">
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_fishGeometry1}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_fishGeometry2}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_fishGeometry3}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_fishGeometry4}" />
             </DrawingGroup>
         </DrawingGroup>
-        <DrawingImage x:Key="svg_database_fish" Drawing="{StaticResource svg_database_fishDrawingGroup}" />
+        <DrawingImage x:Key="svg_database_fish"
+                      Drawing="{StaticResource svg_database_fishDrawingGroup}" />
         <!--#endregion-->
-        
+
         <!--#region Plants Database-->
         <Geometry x:Key="svg_database_plantsGeometry1">F1 M1078,578z M0,0z M10617,5639C10591,5599 10565,5549 10559,5528 10548,5484 10512,5420 10499,5420 10495,5420 10490,5450 10488,5488L10485,5555 10467,5480C10441,5371,10412,5289,10390,5260L10370,5235 10370,5340C10370,5445 10364,5490 10350,5490 10339,5490 10322,5422 10315,5350 10299,5189 10279,5122 10236,5088 10184,5046 10177,5083 10211,5233 10230,5320 10230,5390 10210,5390 10195,5390 10170,5298 10145,5150 10132,5070 10116,4989 10110,4970 10096,4919 10043,4840 10024,4840 10011,4840 10009,4849 10015,4908 10019,4945 10028,5006 10036,5043 10044,5081 10050,5141 10050,5176L10050,5241 10021,5221C9976,5189 9951,5115 9929,4948 9917,4857 9901,4778 9888,4748 9868,4702 9830,4660 9807,4660 9794,4660 9804,4826 9825,4940 9833,4987 9840,5052 9840,5085L9839,5145 9812,5113C9773,5068 9752,5004 9734,4871 9696,4587 9670,4510 9599,4463 9577,4449 9557,4439 9554,4442 9552,4445 9560,4503 9574,4571 9613,4767 9632,4980 9610,4980 9590,4980 9531,4918 9516,4880 9492,4819 9483,4769 9465,4600 9446,4420 9437,4373 9410,4319 9388,4277 9361,4255 9316,4244 9292,4238 9289,4240 9293,4256 9296,4267 9313,4347 9330,4435 9362,4599 9373,4756 9357,4834L9349,4872 9318,4844C9252,4781 9230,4709 9195,4450 9164,4225 9143,4154 9090,4106 9048,4068 9020,4060 9020,4086 9020,4094 9031,4169 9044,4253 9086,4511 9103,4730 9082,4730 9064,4730 9000,4678 8981,4646 8947,4592 8923,4477 8911,4315 8889,4034 8858,3940 8770,3895 8697,3858 8700,3845 8737,4092 8760,4244 8772,4372 8777,4494 8783,4671 8783,4672 8763,4662 8730,4644 8679,4579 8655,4526 8623,4452 8603,4356 8585,4180 8564,3972 8545,3877 8509,3802 8475,3732 8413,3678 8347,3662 8313,3653 8310,3654 8315,3669 8328,3710 8379,3952 8394,4040 8425,4231 8441,4530 8420,4530 8414,4530 8389,4511 8365,4488 8276,4407 8210,4226 8176,3970 8145,3736 8118,3545 8116,3544 8116,3543 8082,3528 8041,3510 7962,3476 7913,3475 7923,3508 8004,3781 8047,4100 8038,4365L8035,4464 7984,4412C7955,4383 7916,4329 7897,4292 7829,4164 7804,4045 7750,3592 7738,3496 7727,3413 7724,3405 7711,3371 7510,3296 7510,3324 7510,3328 7519,3366 7530,3409 7551,3491 7583,3679 7600,3820 7614,3936 7640,4293 7640,4360L7639,4415 7585,4358C7520,4289 7466,4195 7429,4086 7379,3942 7355,3790 7326,3441 7310,3244 7313,3251 7216,3201 7162,3172 7100,3160 7100,3178 7100,3182 7107,3220 7115,3263 7139,3387 7168,3623 7195,3912 7209,4059 7223,4207 7227,4242L7233,4304 7191,4270C7058,4163 6974,3965 6936,3670 6921,3554 6901,3248 6900,3137 6900,3101 6896,3088 6883,3084 6873,3081 6822,3059 6770,3034 6667,2986 6623,2978 6635,3008 6705,3181 6728,3331 6755,3800 6763,3946 6773,4092 6776,4124 6784,4191 6785,4191 6711,4132 6687,4112 6646,4063 6619,4023 6500,3840 6440,3571 6418,3113L6406,2871 6376,2860C6359,2854 6319,2832 6285,2811 6230,2775 6152,2745 6142,2755 6140,2757 6145,2780 6154,2807 6215,2996 6231,3155 6237,3612 6240,3831 6239,4022 6236,4036L6229,4063 6188,4024C5971,3814 5866,3400 5899,2879 5906,2779 5913,2679 5916,2656 5922,2616 5921,2615 5879,2593 5855,2581 5809,2554 5776,2533 5729,2503 5708,2496 5666,2495 5607,2495 5608,2492 5644,2596 5674,2679 5694,2791 5709,2950 5720,3063 5743,3931 5735,3938 5726,3947 5637,3863 5594,3807 5503,3685 5439,3518 5400,3295 5368,3114 5359,2992 5353,2628L5347,2281 5297,2248C5179,2169 5145,2150 5125,2150 5104,2150 5104,2151 5132,2233 5179,2374 5193,2483 5193,2700 5192,2807 5184,2992 5174,3110 5165,3228 5156,3425 5156,3547 5155,3670 5153,3770 5150,3770 5147,3770 5121,3754 5092,3735 4953,3641 4857,3434 4807,3120 4789,3005 4786,2941 4786,2685 4785,2390 4791,2305 4827,2056L4843,1946 4742,1848C4643,1751,4564,1700,4514,1700L4493,1700 4511,1778C4555,1961 4565,2064 4565,2345 4564,2537 4559,2658 4547,2765 4529,2915 4445,3503 4434,3550L4428,3575 4398,3540C4252,3369 4165,3128 4119,2765 4100,2618 4103,2172 4124,1980 4145,1789 4173,1595 4198,1472L4217,1380 4091,1248C4022,1175 3864,1017 3741,898 3430,596 3261,412 3068,169 2989,70 2989,70 3199,70L3378,70 3462,162C3582,294 3681,412 3890,675 3991,802 4109,948 4154,1000 4253,1117 4440,1320 4449,1320 4453,1320 4532,1272 4626,1214 5223,839 5528,715 5934,679 6060,668 6254,679 6372,703L6429,715 6182,875C5844,1093 5689,1186 5524,1269 5247,1407 5031,1481 4782,1524 4736,1532 4697,1540 4694,1542 4686,1551 4946,1797 4992,1824L5039,1851 5170,1741C5605,1373 5926,1198 6265,1145 6388,1125 6605,1129 6717,1151L6780,1164 6661,1226C6525,1297 6458,1341 6230,1510 5809,1822 5627,1908 5278,1965 5257,1968 5240,1974 5240,1978 5240,2003 5341,2107 5389,2132 5494,2187 5592,2165 5756,2050 6304,1668 6480,1571 6725,1518 6795,1503 7047,1501 7071,1515 7084,1523 7038,1564 6833,1725 6694,1835 6518,1967 6442,2018 6280,2128 6039,2251 5883,2304 5821,2325 5770,2344 5770,2346 5770,2358 5945,2478 6004,2506L6073,2540 6119,2503C6144,2482 6222,2418 6291,2359 6591,2106 6750,2006 6963,1935 7088,1893 7225,1870 7349,1870 7443,1870 7443,1870 7425,1890 7395,1924 7197,2074 6985,2226 6858,2316 6758,2396 6711,2445 6631,2527 6602,2545 6495,2580 6408,2608 6348,2641 6327,2674 6311,2698 6311,2700 6340,2720 6356,2732 6407,2754 6452,2770 6498,2785 6543,2801 6552,2805 6564,2810 6615,2767 6752,2633 7012,2381 7158,2275 7335,2211 7446,2171 7524,2158 7644,2162L7742,2165 7674,2212C7600,2263 7499,2347 7288,2533 7115,2686 7001,2767 6863,2836 6801,2867 6753,2896 6756,2901 6766,2918 6851,2962 6935,2995L7020,3029 7207,2838C7466,2576 7578,2489 7741,2424 7805,2399 7980,2357 7988,2365 8000,2377 7861,2542 7721,2681 7577,2824 7411,2965 7267,3067L7209,3108 7267,3130C7303,3144 7348,3153 7386,3153 7489,3154 7540,3122 7710,2947 7890,2762 7956,2715 8117,2659 8194,2632 8393,2579 8398,2585 8412,2599 8239,2802 8130,2899 8037,2983 7873,3108 7737,3199 7666,3247 7649,3270 7686,3270 7694,3270 7727,3281 7760,3295 7856,3335 7872,3331 7999,3240 8060,3196 8159,3125 8218,3082 8342,2992 8474,2921 8575,2890 8654,2866 8793,2853 8829,2867 8851,2876 8844,2883 8719,2982 8545,3118 8388,3228 8217,3334 8082,3417 8079,3419 8102,3434 8178,3484 8264,3498 8351,3476 8430,3455 8472,3431 8626,3319 8839,3164 8967,3111 9093,3125 9204,3137 9205,3134 9041,3264 8810,3448 8674,3530 8528,3576 8472,3593 8471,3594 8488,3613 8519,3649 8600,3680 8662,3680 8740,3680 8801,3655 8965,3555 9130,3455 9227,3412 9313,3402 9375,3395 9490,3403 9511,3416 9530,3427 9199,3628 8976,3742L8836,3813 8866,3836C8913,3875 8955,3890 9009,3890 9079,3890 9146,3864 9292,3783 9440,3700 9496,3675 9573,3661 9633,3650 9702,3658 9754,3681L9781,3694 9728,3728C9601,3809 9309,3940 9188,3970 9161,3977 9140,3988 9140,3994 9140,4019 9202,4079 9244,4095 9306,4119 9359,4105 9545,4021 9627,3983 9713,3946 9735,3939 9797,3919 9897,3923 9950,3947 9995,3967 9995,3968 9970,3978 9956,3983 9869,4022 9776,4064 9684,4106 9565,4154 9512,4172 9458,4189 9413,4205 9411,4206 9409,4208 9419,4228 9433,4250 9497,4345 9573,4348 9815,4265 9972,4210 9992,4206 10075,4205 10145,4205 10173,4209 10199,4224L10233,4242 10209,4261C10173,4290 10075,4317 9964,4330 9828,4345 9757,4366 9714,4404L9677,4436 9713,4467C9771,4518 9838,4521 10100,4485 10165,4476 10237,4472 10265,4475 10318,4482 10400,4516 10400,4531 10400,4536 10398,4540 10395,4540 10393,4540 10306,4553 10203,4570 10027,4598 9915,4622 9903,4634 9892,4645 9930,4688 9967,4706 9999,4721 10038,4725 10220,4730 10418,4736 10438,4738 10479,4759 10516,4778 10521,4784 10507,4791 10498,4796 10403,4803 10295,4807 10188,4810 10100,4816 10100,4820 10100,4838 10155,4883 10203,4905 10231,4918 10312,4942 10382,4959 10452,4976 10524,4995 10542,5003 10581,5019 10640,5067 10640,5082 10640,5100 10537,5082 10448,5050 10372,5022 10270,5009 10270,5028 10270,5045 10310,5093 10343,5115 10362,5129 10427,5156 10486,5176 10618,5220 10637,5229 10675,5270L10705,5303 10663,5297C10640,5294 10593,5275 10560,5255 10494,5215 10438,5204 10433,5230 10427,5255 10493,5324 10590,5395 10679,5460 10715,5494 10643,5445 10590,5410 10570,5412 10570,5453 10571,5489 10578,5504 10636,5580 10686,5646 10694,5670 10677,5694 10665,5711 10659,5706 10617,5639z</Geometry>
         <Geometry x:Key="svg_database_plantsGeometry2">F1 M1078,578z M0,0z M1510,4534C735,4482,178,4300,32,4050L5,4005 5,3640C5,3230 1,3251 83,3163 259,2972 698,2828 1300,2763 1527,2738 2086,2739 2310,2764 2907,2830 3343,2974 3517,3163 3599,3251 3595,3230 3595,3640L3595,4005 3568,4052C3439,4271 2962,4447 2315,4515 2174,4530 1639,4543 1510,4534z</Geometry>
         <Geometry x:Key="svg_database_plantsGeometry3">F1 M1078,578z M0,0z M33,2843L5,2795 5,2435C5,2031 2,2051 83,1963 259,1772 698,1628 1300,1563 1527,1538 2086,1539 2310,1564 2907,1630 3343,1774 3517,1963 3597,2050 3595,2034 3598,2410 3601,2758 3599,2791 3559,2857L3539,2889 3497,2848C3301,2658 2839,2515 2240,2458 2066,2442 1525,2442 1355,2458 1033,2490 762,2542 540,2617 330,2687 191,2761 103,2850L62,2892 33,2843z</Geometry>
         <Geometry x:Key="svg_database_plantsGeometry4">F1 M1078,578z M0,0z M33,1643L5,1595 5,1235C5,831 2,851 83,763 259,572 699,428 1300,363 1532,338 2078,338 2305,363 2910,431 3342,573 3517,763 3598,851 3595,831 3595,1235L3595,1595 3567,1642 3539,1689 3497,1649C3301,1458 2840,1315 2240,1258 2066,1242 1525,1242 1355,1258 752,1317 292,1460 103,1649L61,1691 33,1643z</Geometry>
-        <DrawingGroup x:Key="svg_database_plantsDrawingGroup" ClipGeometry="M0,0 V578 H1078 V0 H0 Z">
-            <DrawingGroup Opacity="1" Transform="0.1,0,0,-0.1,0,578">
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_plantsGeometry1}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_plantsGeometry2}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_plantsGeometry3}" />
-                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}" Geometry="{StaticResource svg_database_plantsGeometry4}" />
+        <DrawingGroup x:Key="svg_database_plantsDrawingGroup"
+                      ClipGeometry="M0,0 V578 H1078 V0 H0 Z">
+            <DrawingGroup Opacity="1"
+                          Transform="0.1,0,0,-0.1,0,578">
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_plantsGeometry1}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_plantsGeometry2}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_plantsGeometry3}" />
+                <GeometryDrawing Brush="{StaticResource svg_menuButtonForeground}"
+                                 Geometry="{StaticResource svg_database_plantsGeometry4}" />
             </DrawingGroup>
         </DrawingGroup>
-        <DrawingImage x:Key="svg_database_plants" Drawing="{StaticResource svg_database_plantsDrawingGroup}" />
+        <DrawingImage x:Key="svg_database_plants"
+                      Drawing="{StaticResource svg_database_plantsDrawingGroup}" />
         <!--#endregion-->
-        
+
         <!--#region Power Off-->
         <Geometry x:Key="svg_poweroffGeometry1">F1 M118.358,126.445z M0,0z M751.98,489.29C751.98,465.182,737.571,444.512,716.909,435.27L716.909,456.937C726.81,464.317 733.277,475.991 733.309,489.29 733.243,511.634 715.177,529.743 692.825,529.775 670.465,529.743 652.375,511.635 652.341,489.29 652.341,475.992 658.856,464.317 668.733,456.937L668.733,435.254C648.071,444.495 633.646,465.174 633.646,489.29 633.646,521.979 660.13,548.445 692.825,548.445 725.488,548.445 751.98,521.978 752.004,489.29L751.974,489.29z</Geometry>
         <Geometry x:Key="svg_poweroffGeometry2">F1 M118.358,126.445z M0,0z M704.9,501.53C704.9,502.08,704.45,502.53,703.9,502.53L681.749,502.53C681.199,502.53,680.749,502.08,680.749,501.53L680.749,423C680.749,422.45,681.199,422,681.749,422L703.899,422C704.449,422,704.899,422.45,704.899,423L704.899,501.53z</Geometry>
@@ -519,10 +612,10 @@
                TargetType="TextBlock">
             <Setter Property="Background" Value="{StaticResource pageTextBlockBackground}" />
             <Setter Property="Foreground" Value="{StaticResource pageTextBlockForeground}" />
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="3" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontWeight" Value="Normal" />
         </Style>
         <!--#endregion-->
         <!--#endregion-->
@@ -536,10 +629,10 @@
             <Setter Property="Foreground" Value="{StaticResource page.TextBox.Foreground}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Height" Value="24" />
             <Setter Property="Padding" Value="2,0" />
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="3" />
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -611,18 +704,165 @@
         <!--#endregion-->
 
         <!--#region ComboBoxes-->
+        <!--#region ComboBox-->
+        <ControlTemplate x:Key="ComboBoxToggleButton"
+                         TargetType="ToggleButton">
+            <Grid Height="26"> <!-- Total Height of the combobox-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <!-- Dropdown area of the ComboBox-->
+                <Border x:Name="Border"
+                        Grid.ColumnSpan="2"
+                        Background="{StaticResource control.ComboBox.Dropdown.Background}"
+                        BorderBrush="{StaticResource control.ComboBox.BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="5" />
+                <!-- TextBox area of the ComboBox-->
+                <Border Grid.Column="0"
+                        Margin="1"
+                        Background="{StaticResource control.ComboBox.TextBox.Background}"
+                        BorderBrush="{StaticResource control.ComboBox.BorderBrush}"
+                        BorderThickness="0,0,1,0"
+                        CornerRadius="5" />
+                <!-- Arrow definition-->
+                <Path x:Name="Arrow"
+                      Grid.Column="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="M 7 3 L 6 2 L 5 2 L 4 1 L 3 1 L 2 0 L 0 0 L 0 1 L 1 2 L 1 3 L 2 4 L 2 5 L 3 6 L 4 7 L 4 8 L 5 9 L 5 10 L 6 11 L 7 12 L 8 11 L 9 10 L 9 9 L 10 8 L 10 7 L 11 6 L 12 5 L 12 4 L 13 3 L 13 2 L 14 1 L 14 0 L 12 0 L 11 1 L 10 1 L 9 2 L 8 2 L 7 3 Z"
+                      Fill="{StaticResource control.ComboBox.Dropdown.Arrow}" />
+            </Grid>
+            
+            <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="{StaticResource control.ComboBox.DropDown.IsMouseOver}" />
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="{StaticResource control.ComboBox.DropDown.IsPressed}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="Border" Property="Background" Value="{StaticResource control.ComboBox.TextBox.Background}" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource control.ComboBox.DisabledBorderBrush}" />
+                    <Setter Property="Foreground" Value="{StaticResource control.ComboBox.DisabledForeground}" />
+                    <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource control.ComboBox.DisabledForeground}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxTextBox"
+                         TargetType="TextBox">
+            <Border x:Name="PART_ContentHost"
+                    Background="{TemplateBinding Background}"
+                    Focusable="False" />
+        </ControlTemplate>
+
+        <Style x:Key="{x:Type ComboBox}"
+               TargetType="ComboBox"> <!-- Dropdownlist-->
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Foreground" Value="{StaticResource control.ComboBox.DropdownList.Foreground}"/>
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton"
+                                          Grid.Column="2"
+                                          ClickMode="Press"
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Template="{StaticResource ComboBoxToggleButton}" />
+                            <ContentPresenter Name="ContentSite"
+                                              Margin="3,3,23,3"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              IsHitTestVisible="False" />
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     Margin="3,3,23,3"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Background="Transparent"
+                                     Focusable="True"
+                                     FontSize="12"
+                                     Foreground="{StaticResource control.ComboBox.TextBox.Foreground}"
+                                     FontWeight="Normal"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"
+                                     Style="{x:Null}"
+                                     Template="{StaticResource ComboBoxTextBox}"
+                                     Visibility="Hidden" />
+                            <Popup Name="Popup"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   Placement="Bottom"
+                                   PopupAnimation="Slide">
+                                <!-- Dropdownlist area-->
+                                <Grid Name="DropDown"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      SnapsToDevicePixels="True">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="{StaticResource control.ComboBox.DropdownList.Background}"
+                                            BorderBrush="{StaticResource control.ComboBox.DropdownList.BorderBrush}"
+                                            BorderThickness="1" />
+                                    <ScrollViewer Margin="4,6,4,6"
+                                                  SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{StaticResource control.ComboBox.DisabledForeground}" />
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="4" />
+                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0" />
+                            </Trigger>
+                            <Trigger Property="IsEditable" Value="true">
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers />
+        </Style>
+        <!--#endregion-->
+
         <!--#region PageComboBox-->
-        <Style x:Key="pageComboBox"
+        <Style x:Key="pageComboBox1"
                TargetType="ComboBox">
             <Setter Property="Background" Value="{StaticResource page.TextBox.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource pageBorder}" />
             <Setter Property="Foreground" Value="{StaticResource page.TextBox.Foreground}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Height" Value="24" />
             <Setter Property="Padding" Value="2,0" />
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="3" />
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -701,10 +941,10 @@
 
         <Style x:Key="Default TabItem"
                TargetType="TabItem">
-            <Setter Property="Background" Value="{StaticResource tabControl.Item.Default.Background}"/>
-            <Setter Property="Foreground" Value="{StaticResource tabControl.Item.Default.Foreground}"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="{StaticResource tabControl.Item.Default.Background}" />
+            <Setter Property="Foreground" Value="{StaticResource tabControl.Item.Default.Foreground}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
@@ -722,11 +962,11 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="#FF569DE5" />
-                                <Setter Property="FontStyle" Value="Italic"/>
+                                <Setter Property="FontStyle" Value="Italic" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter TargetName="Border" Property="Background" Value="#bccaf1" />
-                                <Setter Property="FontStyle" Value="Normal"/>
+                                <Setter Property="FontStyle" Value="Normal" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
